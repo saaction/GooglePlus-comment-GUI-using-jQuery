@@ -1,0 +1,168 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="StyleSheet.css" rel="stylesheet" type="text/css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+</head>
+<body>
+    
+    <div class="mainLog">
+    <img src="img/google-plus.png" />
+    <p>saAction "Share what's new..." box using jQuery</p>
+    <div class="nBx"><div class="l" id="cBox">Loading...</div></div></div>
+    <div id="htmlDefault">
+        <div class="cmt">
+            <div class="dmyTx" onclick="LoaddivText()">Share what's new...</div>
+            <ul class="uplink">
+                <li><a href="javascript:void(0);" class="txt" onclick="LoaddivText();"><span>Text</span></a></li>
+                <li><a href="javascript:void(0);" class="lnk" onclick="LoaddivLink();"><span>Link</span></a></li>
+                <li><a href="javascript:void(0);" class="vdo" onclick="LoaddivVideo();"><span>Video</span></a></li>
+                <li><a href="javascript:void(0);" class="evnt" onclick="LoaddivEvent();"><span>Event</span></a></li>
+            </ul>
+            <div class="cls"></div>
+        </div>
+    </div>
+
+    <div id="htmlTxt">
+        <div class="cmt">
+            <h3>Share what's new...</h3>
+            <ul>
+                <li><textarea id="tComment" tip="Share what's new..." class="edt" req="1"></textarea></li>
+                <li><input id="bShare" type="button" value="Share" class="P InA"  onclick="Sharecomment('text');" /><input id="bCancel" type="button" class="C" value="Cancel" onclick="LoaddivDefault();" /></li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="htmlLnk">
+            <div class="cmt"><h3>Share a link</h3>
+            <ul>
+                <li><input id="tlink" type="text" tip="Enter or paste a link" class="edt"  req="1" /></li>
+                <li><textarea id="Textarea2" class="edt" tip="Share what's new..."></textarea></li>
+                <li><input id="Button3" type="button" value="Share" class="P InA"  onclick="Sharecomment('link');" /><input id="Button4" type="button" class="C" value="Cancel" onclick="LoaddivDefault();" /></li>
+            </ul>
+            </div>
+    </div>
+    
+    <div id="htmlVdo">
+        <div class="cmt"><h3>Share a video</h3>
+        <ul>
+            <li><input id="tyourl" type="text"  tip="Enter or paste a YouTube link" class="edt"  req="1" /></li>
+            <li><textarea id="Textarea3" tip="Share what's new..." class="edt"></textarea></li>
+            <li><input id="Button5" type="button" value="Share" class="P InA" onclick="Sharecomment('video');"/><input id="Button6" type="button" class="C" value="Cancel" onclick="LoaddivDefault();" /></li>
+        </ul>
+        </div>
+    </div>
+
+    <div id="htmlEve">
+        <div class="cmt"><h3>Share an event</h3>
+            <div class="iEveImg" eveImg="0"><img id="eveImg" src=""><div class="optX"><div OnClick="navEveImg('-');">&lt;</div><div OnClick="navEveImg('+');">&gt;</div></div></div>
+            <ul>
+                <li><textarea id="Textarea4" tip="Share what's new..." class="edt" req="1"></textarea></li>
+                <li><input id="eDt" type="text" tip="Event Date" class="edt dt" req="1" /><div class="tim"><select id="eSel" ><option value="00:00">00:00</option><option value="00:30">00:30</option><option value="01:00">01:00</option><option value="01:30">01:30</option><option value="02:00">02:00</option><option value="02:30">02:30</option><option value="03:00">03:00</option><option value="03:30">03:30</option><option value="04:00">04:00</option><option value="04:30">04:30</option><option value="05:00">05:00</option><option value="05:30">05:30</option><option value="06:00">06:00</option><option value="06:30">06:30</option><option value="07:00">07:00</option><option value="07:30">07:30</option><option value="08:00">08:00</option><option value="08:30">08:30</option><option value="09:00">09:00</option><option value="09:30">09:30</option><option value="10:00">10:00</option><option value="10:30">10:30</option><option value="11:00">11:00</option><option value="11:30">11:30</option><option value="12:00">12:00</option><option value="12:30">12:30</option><option value="13:00">13:00</option><option value="13:30">13:30</option><option value="14:00">14:00</option><option value="14:30">14:30</option><option value="15:00">15:00</option><option value="15:30">15:30</option><option value="16:00">16:00</option><option value="16:30">16:30</option><option value="17:00">17:00</option><option value="17:30">17:30</option><option value="18:00">18:00</option><option value="18:30">18:30</option><option value="19:00">19:00</option><option value="19:30">19:30</option><option value="20:00">20:00</option><option value="20:30">20:30</option><option value="21:00">21:00</option><option value="21:30">21:30</option><option value="22:00">22:00</option><option value="22:30">22:30</option><option value="23:00">23:00</option><option value="23:30">23:30</option></select></div><div class="cls"></div></li><li><textarea id="tDesc" type="text" tip="Details (optional)" class="edt"></textarea></li><li><input id="Button7" type="button" value="Share" onclick="Sharecomment('event');" class="P InA" /><input id="Button8" type="button" value="Cancel" onclick="LoaddivDefault();" class="C" /></li>
+            </ul>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var eveImgArr = new Array("Waterfall.1200x300.gif", "Soccer.1200x300.gif", "MarchMadness.1200x300.gif", "03_giraffe.jpg", "14_hiking_giant.jpg", "24_farm.jpg", "29-flowers.jpg", "Dinner-Out.1200x300.gif", "Movie.1200x300.gif", "Sparkle-Candle.940x280.hq.gif", "10_nutcrackers.jpg", "14_cafe.jpg", "lanterns.gif", "Cocktails.1200x300.gif", "dino.jpg");
+        $(document).ready(function () {
+            LoaddivDefault();
+        });  //end jQuery
+
+        //Default HTML
+        function LoaddivDefault() {
+            $('#cBox').switchClass("lVw lVwEv", "l", 'fast', "easeInQuad");
+            $('#cBox').html($('#htmlDefault').html()); 
+        }
+
+        ///Function to Display Text Comment to Share
+        function LoaddivText() {
+            mindBxSw('');
+            $('#cBox').html($('#htmlTxt').html()); //Load HTML
+            addWaterMark();
+        }
+
+        ///Function to Display Link / URL to Share
+        function LoaddivLink() {
+            mindBxSw('');
+            $('#cBox').html($('#htmlLnk').html());
+            addWaterMark();
+        }
+
+        ///Function to Display Vidoe Link to Share
+        function LoaddivVideo() {
+            mindBxSw('');
+            $('#cBox').html($('#htmlVdo').html());
+            addWaterMark();
+        }
+
+        ///Function to Display 'Create an Event' to Share
+        function LoaddivEvent() {
+            mindBxSw('lVwEv');
+            $('#cBox').html($('#htmlEve').html());
+            addWaterMark();
+
+            var eveRandomSequence = Math.round(Math.random() * 9);
+            $('#cBox #eveImg').attr('src', "/img/" + eveImgArr[eveRandomSequence]);
+
+            $('#eDt').datepicker({ changeMonth: true, changeYear: true, dateFormat: 'dd/mm/yy', yearRange: '2012:2015'});
+        }
+
+        ///Change CSS with animation using "switchClass" its too cool.
+        function mindBxSw(digTyp) {
+            $('#cBox').switchClass("l", "lVw " + digTyp, 'fast', "easeInQuad");
+        }
+
+        ///Add Watermark effect to each TextBox
+        function addWaterMark(){
+            oPrnt = $('#cBox');
+            oPrnt.find('li input[type=text],li textarea').each(function () {
+                oX = $(this);
+                oX.val(oX.attr('tip'));
+                oX.focus(function () { $(this).addClass('clrF'); if ($(this).val() == $(this).attr('tip')) { $(this).val(''); } }); /*focus*/
+                oX.blur(function () { if ($(this).val() == '' || $(this).val() == $(this).attr('tip')) { $(this).val($(this).attr('tip')).removeClass('clrF'); } velidBtn($('.nBx .cmt')); }); /*blue*/
+            });/*ech*/
+            if (oPrnt.find('li:eq(0) textarea').length) {
+                oPrnt.find('li:eq(0) textarea').focus();
+            } else {
+                oPrnt.find('li:eq(0) input[type=text]').focus(); 
+            }
+        } /*End WaterMark*/
+
+        ///Navigation of Image in Event Creation
+        function navEveImg(act) {
+            var xObj = $('.mainLog .nBx .iEveImg');
+            var crrID = parseInt(xObj.attr('eveImg'));
+            var newID = -1;
+            if (act == "+" && crrID + 1 < eveImgArr.length) { newID = crrID + 1; }
+            else if (act == "-" && crrID - 1 >= 0) { newID = crrID - 1; }
+            if (newID == -1) return;
+            xObj.attr('eveImg', newID).find('img').attr('src', '/img/' + eveImgArr[newID]); 
+        }/*End of the function Navigation of Image*/
+
+        //This function check velidation
+        function velidBtn(oPrnt) {
+            var isAct = true;
+            oPrnt.find('li input[req=1],li textarea[req=1]').each(function () {
+                if ($(this).val()==$(this).attr('tip')) {
+                    isAct = false;
+                }
+            });
+            if (isAct == true)
+            { oPrnt.find('.P').removeClass('InA'); }
+            else {
+                oPrnt.find('.P').addClass('InA');
+            } 
+        }
+
+        //Finally When user click on "Share" button, it will go to save data into database.
+        function Sharecomment(CommentType) {
+            alert("To Do : Save this comment to Database.");
+            LoaddivDefault();
+        }     
+    </script>
+    
+</body>
+</html>
