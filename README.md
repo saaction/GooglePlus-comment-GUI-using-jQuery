@@ -8,3 +8,5 @@ It allow us following task:
 * Link
 * Video Sharing
 * Event Scheduling
+
+![Add Text Message](https://github.com/saaction/GooglePlus-comment-GUI-using-jQuery/blob/master/GooglePlus%20Preview.png)
